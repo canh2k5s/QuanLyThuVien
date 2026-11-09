@@ -1,0 +1,180 @@
+/* Nâng cấp giao diện nhẹ: chỉ trình bày, không ảnh hưởng MVC hoặc dữ liệu. */
+:root {
+    --admin-dark: #123c36;
+    --admin-dark-2: #0c2c2a;
+    --admin-green: #176a5d;
+    --admin-gold: #e7bd69;
+    --admin-text: #203c36;
+    --admin-muted: #768882;
+    --admin-border: #e7eeeb;
+    --admin-bg: #f5f8f6;
+}
+body {
+    margin: 0;
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, Segoe UI, sans-serif;
+    background: var(--admin-bg);
+    color: var(--admin-text);
+}
+.admin-page { min-height: 100vh; }
+.ui-icon { display: inline-block; width: 20px; height: 20px; flex: none; vertical-align: middle; }
+
+/* Thanh điều hướng - giữ nguyên kích thước và tuyến trang. */
+.sidebar {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    width: 260px;
+    min-height: 100vh;
+    flex-shrink: 0;
+    color: #d9e9e3;
+    background: radial-gradient(ellipse at 10% 0%, #215b4e 0, transparent 45%), linear-gradient(165deg, #123c36 0%, #0c2c2a 95%);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.brand-wrap { display:flex; align-items:center; gap: 11px; padding: 13px 4px 25px; }
+.brand-mark {
+    width: 44px; height: 44px; flex-shrink: 0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius: 14px; color: #ffe1a0;
+    background: rgba(231,189,105,.13); border: 1px solid rgba(231,189,105,.24);
+}
+.brand-mark .ui-icon { width: 24px; height: 24px; }
+.brand { font-family:'Source Serif 4',Georgia,serif; font-size:20px; font-weight:700; color:#fff; line-height:1.2; letter-spacing:-.4px; }
+.brand span { color:var(--admin-gold); }
+.brand small { display:block; margin-top:5px; font: 600 9px/1.4 'Be Vietnam Pro',sans-serif; letter-spacing:2.2px; color:#9cbcb1; }
+.sidebar-label { margin: 8px 13px 12px; color:#8fb0a4; font-size:10px; font-weight:700; letter-spacing:2px; }
+.sidebar .nav { gap: 5px; }
+.sidebar .nav-link {
+    display:flex; align-items:center; gap:12px;
+    padding:13px 14px; margin:0;
+    color:#d7e6e1; border-radius:11px;
+    font-size:13px; font-weight:500; text-decoration:none;
+    transition: background .2s, color .2s, transform .2s;
+    white-space:nowrap;
+}
+.sidebar .nav-link .ui-icon { width:19px; height:19px; color:#a3c0b7; }
+.sidebar .nav-link:hover { background:rgba(255,255,255,.09); color:#fff; transform:translateX(2px); }
+.sidebar .nav-link.active { color:#173a33; background:#e9c77e; font-weight:700; box-shadow:0 4px 12px rgba(4,21,17,.15); }
+.sidebar .nav-link.active .ui-icon { color:#173a33; }
+.sidebar .nav-link:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+.sidebar-divider { border:0; border-top:1px solid rgba(255,255,255,.18); opacity:1; margin:12px 8px; }
+.sidebar-bottom { margin-top:auto; padding:20px 8px 4px; display:flex; align-items:center; gap:8px; color:#92b1a6; font-size:11px; }
+.sidebar-bottom .ui-icon { width:16px; height:16px; color:var(--admin-gold); }
+
+/* Vùng chính. */
+.admin-content { flex:1; min-width:0; background: radial-gradient(circle at 100% 0%, #eaf5ef 0, transparent 34%), var(--admin-bg); }
+.dashboard-inner { width:100%; max-width: 1440px; margin: 0 auto; }
+.page-topline { margin: 2px 0 20px; color:#8ca39b; font-size:10px; letter-spacing:1.7px; font-weight:700; }
+.page-topline span { color:#bdcbc5; padding:0 7px; }
+.dashboard-header {
+    position:relative; isolation:isolate; overflow:hidden;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    min-height:184px; padding:30px 35px;
+    border-radius:20px;
+    background:linear-gradient(110deg,#f5faf7 0%,#e8f3ee 100%);
+    border:1px solid #dfece5;
+    box-shadow:0 8px 26px rgba(19,60,49,.035);
+    margin-bottom:36px;
+}
+.dashboard-header::before { content:""; position:absolute; z-index:-1; width:280px; height:280px; right:-70px; top:-130px; border-radius:50%; border:45px solid rgba(29,101,88,.065); }
+.dashboard-header::after { content:""; position:absolute; z-index:-1; width:155px; height:155px; right:100px; bottom:-118px; border-radius:50%; background:rgba(231,189,105,.13); }
+.header-eyebrow { display:inline-flex; align-items:center; gap:7px; color:#1e7668; font-size:10px; letter-spacing:1.5px; font-weight:800; }
+.header-eyebrow .ui-icon { width:15px; height:15px; }
+.dashboard-header h1 { font:700 clamp(26px,2.7vw,35px)/1.22 'Be Vietnam Pro',sans-serif; color:#163c34; margin:10px 0 9px; letter-spacing:-1px; }
+.dashboard-header p { color:#637f75; margin:0; font-size:13px; line-height:1.8; }
+.admin-user { display:flex; align-items:center; gap:12px; padding:12px 16px; border:1px solid rgba(255,255,255,.95); background:rgba(255,255,255,.7); backdrop-filter:blur(6px); border-radius:14px; box-shadow:0 5px 14px rgba(20,62,52,.035); min-width:220px; }
+.user-avatar { display:flex; align-items:center; justify-content:center; flex:none; width:40px; height:40px; border-radius:12px; color:#186a5c; background:#e3f3eb; }
+.user-details small { display:block; font-size:10px; color:#869d93; margin-bottom:5px; }
+.user-details strong { display:block; font-size:12px; color:#214d42; font-weight:700; overflow-wrap:anywhere; }
+.section-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:18px; }
+.section-kicker { display:block; color:#7f9c92; font-size:10px; font-weight:800; letter-spacing:1.5px; margin-bottom:6px; }
+.section-heading h2, .panel-heading h2 { margin:0; color:#1d3d35; font-size:19px; letter-spacing:-.4px; font-weight:700; }
+.section-ornament { color:#a8c3b7; display:flex; }
+.section-ornament .ui-icon { width:20px; height:20px; }
+
+/* Thẻ thống kê - giữ các trị số từ view. */
+.stat, .panel { background:#fff; border:1px solid var(--admin-border); border-radius:16px; box-shadow:0 4px 20px rgba(29,61,48,.035); }
+.stat { min-height:145px; height:100%; padding:20px 20px 18px; position:relative; overflow:hidden; transition:transform .2s, box-shadow .2s, border-color .2s; }
+.stat:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(25,74,57,.085); border-color:#d4e5dc; }
+.stat::before { content:""; position:absolute; left:0; right:0; top:0; height:3px; background:var(--stat-accent,#1d806c); opacity:.85; }
+.stat-top { display:flex; gap:9px; align-items:flex-start; justify-content:space-between; }
+.stat-label { color:#71877e; font-size:12px; line-height:1.55; font-weight:600; }
+.stat-icon { width:37px; height:37px; margin-top:-3px; flex:none; display:flex; align-items:center; justify-content:center; border-radius:11px; color:var(--stat-accent); background:var(--stat-bg); }
+.stat-icon .ui-icon { width:19px; height:19px; }
+.stat .num { margin-top:12px; font-size:30px; line-height:1.25; font-weight:800; color:#1c4137; letter-spacing:-1.2px; font-variant-numeric:tabular-nums; }
+.stat .num.text-danger { color:#d4545f!important; }
+.stat-teal { --stat-accent:#1c8a72; --stat-bg:#e6f5ef; }
+.stat-blue { --stat-accent:#4485c6; --stat-bg:#eaf2fc; }
+.stat-violet { --stat-accent:#8b6fc0; --stat-bg:#f1edfb; }
+.stat-gold { --stat-accent:#c79636; --stat-bg:#fff5dc; }
+.stat-rose { --stat-accent:#d95d6b; --stat-bg:#fff0f1; }
+
+/* Bảng sách mượn nhiều. */
+.panel { overflow:hidden; padding:0; }
+.panel-heading { display:flex; align-items:center; justify-content:space-between; gap:15px; padding:23px 25px; border-bottom:1px solid #edf1ef; }
+.panel-heading-left { display:flex; align-items:center; gap:13px; }
+.panel-heading-icon { display:flex; align-items:center; justify-content:center; width:44px; height:44px; flex:none; border-radius:13px; color:#196d5e; background:#e7f5ed; }
+.panel-heading-icon .ui-icon { width:23px; height:23px; }
+.panel-heading h2 { font-size:17px; }
+.table-count { white-space:nowrap; padding:7px 12px; border:1px solid #e1eee6; background:#f3faf6; color:#477567; border-radius:100px; font-size:11px; font-weight:700; }
+.admin-table { margin-bottom:0; }
+.admin-table thead th { background:#fafcfb; border-bottom:1px solid #e9efec; color:#8b9e95; padding:14px 25px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.6px; }
+.admin-table tbody td { padding:19px 25px; border-color:#f0f3f1; color:#244237; font-size:13px; font-weight:500; }
+.admin-table tbody tr:last-child td { border-bottom:0; }
+.admin-table tbody tr:hover td { background:#fafcfb; }
+.table-book-icon { display:inline-flex; align-items:center; justify-content:center; vertical-align:middle; width:34px; height:34px; margin-right:12px; background:#f1f6f2; border:1px solid #e5eee8; color:#52796b; border-radius:9px; }
+.table-book-icon .ui-icon { width:16px; height:16px; }
+.book-title { vertical-align:middle; font-weight:600; }
+.admin-table .count-col { width:135px; text-align:center; }
+.admin-table .progress-col { width:185px; }
+.borrow-count { display:inline-flex; justify-content:center; align-items:center; font-variant-numeric:tabular-nums; background:#eaf7f0; color:#1c8069; border-radius:8px; min-width:34px; padding:6px 8px; font-size:12px; font-weight:800; }
+.borrow-track { height:7px; border-radius:20px; background:#e9f0ec; overflow:hidden; }
+.borrow-track > span { display:block; height:100%; border-radius:20px; background:linear-gradient(90deg,#258c75,#69bda0); }
+.admin-footer { text-align:center; margin:22px 0 0; color:#a0ada5; font-size:11px; }
+
+/* Giữ lại các nút dùng ở các trang quản trị khác. */
+.btn-teal { background:#1d6558; color:#fff; border:0; border-radius:9px; }
+.btn-teal:hover { background:#154b42; color:#fff; }
+.btn-gold { background:#e7bd69; color:#123c36; border:0; border-radius:9px; }
+.btn-gold:hover { background:#d5a94e; color:#123c36; }
+.table th { color:#23483e; font-weight:600; }
+.admin-table thead th { color:#8b9e95; }
+
+@media(max-width:1199.98px) {
+    .dashboard-header { padding:26px; }
+    .stat { min-height:138px; }
+}
+@media(max-width:991.98px) {
+    .sidebar { width:100%; min-height:auto; position:relative; padding-bottom:10px!important; }
+    .brand-wrap { padding:3px 4px 14px; }
+    .sidebar-label, .sidebar-bottom { display:none; }
+    .sidebar .nav { flex-direction:row!important; flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; gap:4px; scrollbar-width:thin; }
+    .sidebar .nav-link { padding:10px 12px; font-size:12px; }
+    .sidebar .nav-link:hover { transform:none; }
+    .sidebar-divider { display:none; }
+    .page-topline { margin-top:0; }
+}
+@media(max-width:575.98px) {
+    .dashboard-header { flex-direction:column; align-items:flex-start; gap:17px; padding:22px; border-radius:16px; margin-bottom:28px; }
+    .dashboard-header h1 { margin:8px 0; }
+    .admin-user { width:100%; min-width:0; }
+    .stat { padding:15px 14px; min-height:131px; border-radius:13px; }
+    .stat .num { font-size:25px; letter-spacing:-.6px; margin-top:14px; }
+    .stat-label { font-size:11px; }
+    .stat-icon { width:31px; height:31px; border-radius:9px; }
+    .stat-icon .ui-icon { width:16px; height:16px; }
+    .section-heading h2 { font-size:17px; }
+    .panel-heading { padding:17px; }
+    .panel-heading-icon { width:39px; height:39px; }
+    .panel-heading h2 { font-size:14px; line-height:1.5; }
+    .table-count { display:none; }
+    .admin-table thead th, .admin-table tbody td { padding:13px 15px; }
+    .admin-table .progress-col { display:none; }
+    .admin-table .count-col { width:95px; }
+    .table-book-icon { margin-right:6px; }
+}
+@media(prefers-reduced-motion:reduce) {
+    .stat,.sidebar .nav-link { transition:none; }
+    .stat:hover,.sidebar .nav-link:hover { transform:none; }
+}

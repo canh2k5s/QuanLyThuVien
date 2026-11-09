@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Thư viện trực tuyến</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/QuanLyThuVien.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <nav class="navbar navbar-lib">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+
+            <a class="navbar-brand brand" asp-controller="Home" asp-action="Index">
+                Thư viện <span>trực tuyến</span>
+            </a>
+
+            <ul class="navbar-nav flex-row flex-wrap gap-3 me-auto ms-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link text-white"
+                       asp-controller="Home" asp-action="Index">
+                        Trang chủ
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white"
+                       asp-controller="Sach" asp-action="Index">
+                        Tra cứu sách
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white"
+                       asp-controller="MuonSach" asp-action="Index">
+                        Lịch sử mượn trả
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                @if (Context.Session.GetInt32("MaNguoiDung") != null)
+                {
+                    <span class="text-dark small">
+                        <i class="bi bi-person-circle"></i>
+                        Xin chào, @Context.Session.GetString("HoTen")
+                    </span>
+
+                    <a class="btn btn-gold btn-sm"
+                    asp-controller="Account" asp-action="Logout">
+                        Đăng xuất
+                    </a>
+                }
+                else
+                {
+                    <div class="d-flex align-items-center ms-auto gap-3">
+                        <a asp-controller="Account"
+                        asp-action="Login"
+                        class="nav-link text-dark">
+                            Đăng nhập
+                        </a>
+
+                        <a asp-controller="Account"
+                        asp-action="Register"
+                        class="nav-link text-dark">
+                            Đăng ký
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </nav>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer-lib">
+        <div class="container py-4">
+            <div class="row g-4">
+
+                <div class="col-md-5">
+                    <h4 class="footer-brand">Thư viện trực tuyến</h4>
+                    <p>
+                        Hệ thống quản lý thư viện hỗ trợ tra cứu sách,
+                        đăng ký mượn sách và theo dõi lịch sử mượn trả
+                        một cách thuận tiện.
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Liên kết</h5>
+                    <ul class="footer-links">
+                        <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                        <li><a asp-controller="Sach" asp-action="Index">Tra cứu sách</a></li>
+                        <li><a asp-controller="MuonSach" asp-action="Index">Lịch sử mượn trả</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Thông tin thư viện</h5>
+                    <p>Hệ thống quản lý thư viện</p>
+                    <p>Hỗ trợ độc giả tra cứu và mượn sách trực tuyến.</p>
+                </div>
+
+            </div>
+
+            <hr class="footer-line" />
+
+            <div class="text-center small">
+                &copy; @DateTime.Now.Year - Thư viện trực tuyến.
+                All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

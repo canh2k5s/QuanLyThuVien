@@ -1,0 +1,191 @@
+@{
+    ViewData["Title"] = "Tổng quan";
+}
+
+<!-- Giữ nguyên các đường dẫn, số liệu và chức năng trang quản trị -->
+<div class="admin-page d-lg-flex">
+    <!-- SIDEBAR -->
+    <aside class="sidebar p-3 p-xl-4" aria-label="Điều hướng quản trị">
+        <div class="brand-wrap">
+            <span class="brand-mark"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M9 7h6M9 11h4"/></svg></span>
+            <div class="brand">Thư viện <span>quản lý</span><small>ADMIN DASHBOARD</small></div>
+        </div>
+        <div class="sidebar-label">DANH MỤC</div>
+        <nav class="nav flex-column" aria-label="Danh mục quản trị">
+            <a class="nav-link active" asp-controller="Admin" asp-action="Index" aria-current="page">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> <span>Tổng quan</span>
+            </a>
+            <a class="nav-link" asp-controller="Admin" asp-action="PhieuMuon">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16v18l-4-2-4 2-4-2-4 2V3Z"/><path d="M8 8h8M8 12h6"/></svg> <span>Phiếu mượn</span>
+            </a>
+            <a class="nav-link" asp-controller="Admin" asp-action="QuaHan">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10.29 3.86-8.47 14.14A2 2 0 0 0 3.53 21h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg> <span>Quá hạn</span>
+            </a>
+            <a class="nav-link" asp-controller="Admin" asp-action="Sach">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M9 7h6M9 11h4"/></svg> <span>Quản lý sách</span>
+            </a>
+            <a class="nav-link" asp-controller="Admin" asp-action="NguoiDung">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span>Người dùng</span>
+            </a>
+            <hr class="sidebar-divider" />
+            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg> <span>Về trang độc giả</span>
+            </a>
+            <a class="nav-link" asp-controller="Account" asp-action="Logout">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg> <span>Đăng xuất</span>
+            </a>
+        </nav>
+        <div class="sidebar-bottom">
+            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Không gian quản trị thư viện</span>
+        </div>
+    </aside>
+
+    <!-- NỘI DUNG -->
+    <main class="admin-content p-3 p-md-4 p-xl-5">
+        <div class="dashboard-inner">
+            <div class="page-topline">BẢNG ĐIỀU KHIỂN <span>/</span> TỔNG QUAN</div>
+            <header class="dashboard-header">
+                <div class="header-copy">
+                    <span class="header-eyebrow"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 5.9L20 11l-6.1 2.1L12 19l-1.9-5.9L4 11l6.1-2.1L12 3Z"/></svg> TRANG QUẢN TRỊ</span>
+                    <h1>Tổng quan</h1>
+                    <p>Theo dõi hoạt động và tình hình quản lý thư viện.</p>
+                </div>
+                <div class="admin-user">
+                    <span class="user-avatar"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                    <div class="user-details">
+                        <small>Đang đăng nhập</small>
+                        <strong>Admin: @Context.Session.GetString("HoTen")</strong>
+                    </div>
+                </div>
+            </header>
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">SỐ LIỆU THƯ VIỆN</span>
+                    <h2>Thống kê tổng quan</h2>
+                </div>
+                <span class="section-ornament"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+            </div>
+
+            <!-- THỐNG KÊ: giữ nguyên 8 giá trị trong file cũ -->
+            <div class="row g-3 mb-4 mb-xl-5">
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-teal">
+                    <div class="stat-top">
+                        <span class="stat-label">Đầu sách</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M9 7h6M9 11h4"/></svg></span>
+                    </div>
+                    <div class="num ">6</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-blue">
+                    <div class="stat-top">
+                        <span class="stat-label">Sách còn trong kho</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg></span>
+                    </div>
+                    <div class="num ">61 / 61</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-violet">
+                    <div class="stat-top">
+                        <span class="stat-label">Độc giả</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                    </div>
+                    <div class="num ">3</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-gold">
+                    <div class="stat-top">
+                        <span class="stat-label">Tổng phiếu mượn</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16v18l-4-2-4 2-4-2-4 2V3Z"/><path d="M8 8h8M8 12h6"/></svg></span>
+                    </div>
+                    <div class="num ">2</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-gold">
+                    <div class="stat-top">
+                        <span class="stat-label">Chờ duyệt</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                    </div>
+                    <div class="num ">2</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-blue">
+                    <div class="stat-top">
+                        <span class="stat-label">Đang mượn</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M9 7h6M9 11h4"/></svg></span>
+                    </div>
+                    <div class="num ">0</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-teal">
+                    <div class="stat-top">
+                        <span class="stat-label">Đã trả</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span>
+                    </div>
+                    <div class="num ">0</div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="stat stat-rose">
+                    <div class="stat-top">
+                        <span class="stat-label">Quá hạn</span>
+                        <span class="stat-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10.29 3.86-8.47 14.14A2 2 0 0 0 3.53 21h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+                    </div>
+                    <div class="num text-danger">1</div>
+                </div>
+            </div>
+            </div>
+
+            <!-- SÁCH MƯỢN NHIỀU: giữ nguyên các dữ liệu cũ -->
+            <section class="panel" aria-labelledby="popular-books-title">
+                <div class="panel-heading">
+                    <div class="panel-heading-left">
+                        <span class="panel-heading-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+                        <div>
+                            <span class="section-kicker">HOẠT ĐỘNG MƯỢN SÁCH</span>
+                            <h2 id="popular-books-title">Sách được mượn nhiều nhất</h2>
+                        </div>
+                    </div>
+                    <span class="table-count">03 đầu sách</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table admin-table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tên sách</th>
+                                <th scope="col" class="count-col">Lượt mượn</th>
+                                <th scope="col" class="progress-col">Mức độ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><span class="table-book-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M9 7h6M9 11h4"/></svg></span><span class="book-title">Clean Code</span></td>
+                            <td class="count-col"><span class="borrow-count">4</span></td>
+                            <td class="progress-col"><div class="borrow-track" role="img" aria-label="4 lượt mượn"><span style="width:100%"></span></div></td>
+                        </tr>
+                        <tr>
+                            <td><span class="table-book-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M9 7h6M9 11h4"/></svg></span><span class="book-title">Lập trình C# cơ bản</span></td>
+                            <td class="count-col"><span class="borrow-count">3</span></td>
+                            <td class="progress-col"><div class="borrow-track" role="img" aria-label="3 lượt mượn"><span style="width:75%"></span></div></td>
+                        </tr>
+                        <tr>
+                            <td><span class="table-book-icon"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M9 7h6M9 11h4"/></svg></span><span class="book-title">Đắc nhân tâm</span></td>
+                            <td class="count-col"><span class="borrow-count">1</span></td>
+                            <td class="progress-col"><div class="borrow-track" role="img" aria-label="1 lượt mượn"><span style="width:25%"></span></div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <footer class="admin-footer">Hệ thống quản lý thư viện</footer>
+        </div>
+    </main>
+</div>

@@ -1,0 +1,70 @@
+@{
+    ViewData["Title"] = "Tra cứu và mượn sách";
+}
+
+<header class="hero"><div class="container">
+ <span class="hero-eyebrow">THƯ VIỆN TRỰC TUYẾN</span>
+ <h1 class="h2 mb-2">Tìm sách và đăng ký mượn</h1>
+ <p class="hero-description">Tra cứu đầu sách, khám phá tri thức và đăng ký mượn chỉ với vài thao tác.</p>
+ <form class="search-box row g-1" onsubmit="return false">
+  <div class="col-md-9"><input id="q" class="form-control" placeholder="Nhập tên sách, tác giả, danh mục hoặc thể loại"></div>
+  <div class="col-md-3 d-grid"><button class="btn btn-teal" onclick="render()">Tìm kiếm</button></div>
+ </form>
+</div></header>
+
+<section class="container py-4">
+ <ul class="nav nav-tabs mb-4">
+  <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#t1">Tra cứu sách</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#t2">Lịch sử mượn trả</button></li>
+  <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#t3">Thông báo <span class="badge bg-danger">1</span></button></li>
+ </ul>
+ <div class="tab-content">
+  <div class="tab-pane fade show active" id="t1">
+   <div id="kq" class="row g-3 row-cols-1 row-cols-md-2 row-cols-lg-3"></div>
+  </div>
+  <div class="tab-pane fade" id="t2"><div class="panel p-3"><div class="table-responsive">
+   <table class="table align-middle mb-0"><thead><tr><th>Phiếu</th><th>Sách</th><th>SL</th><th>Ngày đăng ký</th><th>Hạn trả</th><th>Tình trạng</th></tr></thead><tbody>
+    <tr><td>#1</td><td>Lập trình C# cơ bản</td><td>1</td><td>03/11/2026</td><td>—</td><td><span class="st st-ChoDuyet">Chờ duyệt</span></td></tr>
+    <tr><td>#1</td><td>Cơ sở dữ liệu SQL Server</td><td>1</td><td>03/11/2026</td><td>—</td><td><span class="st st-ChoDuyet">Chờ duyệt</span></td></tr>
+    <tr><td>#0</td><td>Clean Code</td><td>1</td><td>10/10/2026</td><td>24/10/2026</td><td><span class="st st-DaTra">Đã trả</span></td></tr>
+   </tbody></table></div></div></div>
+  <div class="tab-pane fade" id="t3"><div class="list-group">
+   <div class="list-group-item"><strong>Kết quả đăng ký mượn sách</strong><div class="small text-muted">Phiếu mượn của bạn đã được duyệt. Hãy đến thư viện nhận sách.</div></div>
+  </div></div>
+ </div>
+</section>
+
+<div class="modal fade" id="dk" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+ <div class="modal-header"><h5 class="modal-title">Đăng ký mượn sách</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+ <div class="modal-body"><p id="dkTen" class="fw-semibold"></p>
+  <label class="form-label">Số lượng</label><input id="dkSl" type="number" min="1" value="1" class="form-control">
+  <div class="form-text">Phiếu sẽ ở trạng thái “Chờ duyệt” cho đến khi thủ thư xác nhận.</div></div>
+ <div class="modal-footer"><button class="btn btn-teal" data-bs-dismiss="modal" onclick="alert('Đã gửi đăng ký. Theo dõi tại tab Lịch sử mượn trả.')">Gửi đăng ký</button></div>
+</div></div></div>
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const sach=[
+["Tôi thấy hoa vàng trên cỏ xanh","Nguyễn Nhật Ánh","Sách văn học","NXB Trẻ",2010,10,10,"A01","Tiểu thuyết"],
+["Chí Phèo","Nam Cao","Sách văn học","NXB Kim Đồng",2015,8,8,"A02","Truyện ngắn"],
+["Lập trình C# cơ bản","Trần Văn Bình","Sách công nghệ","NXB Giáo dục Việt Nam",2023,15,15,"B01","Lập trình"],
+["Clean Code","Robert C. Martin","Sách công nghệ","NXB Lao Động",2008,6,6,"B02","Lập trình"],
+["Đắc nhân tâm","Dale Carnegie","Sách kỹ năng","NXB Lao Động",2020,12,12,"C01","Kỹ năng sống"],
+["Cơ sở dữ liệu SQL Server","Trần Văn Bình","Sách công nghệ","NXB Giáo dục Việt Nam",2024,10,10,"B03","Cơ sở dữ liệu"]];
+const mau=["c1","c2","c3","c4","c5","c6"];
+function render(){
+ const k=document.getElementById('q').value.toLowerCase().trim();
+ const r=sach.map((s,i)=>[s,i]).filter(([s])=>!k||s.some((v,j)=>[0,1,2,8].includes(j)&&String(v).toLowerCase().includes(k)));
+ document.getElementById('kq').innerHTML=r.length?r.map(([s,i])=>`<div class="col"><div class="book d-flex flex-column">
+  <div class="cover ${mau[i]}">${s[0]}</div>
+  <div class="p-3 d-flex flex-column flex-grow-1">
+   <div class="text-muted small">${s[1]} · ${s[3]} · ${s[4]}</div>
+   <div class="small mt-1">${s[2]} · ${s[8]} · Kệ ${s[7]}</div>
+   <div class="mt-auto pt-3 d-flex justify-content-between align-items-center">
+    <span class="badge ${s[6]?'badge-ok':'badge-out'}">Còn ${s[6]}/${s[5]}</span>
+    <button class="btn btn-sm btn-teal" ${s[6]?'':'disabled'} onclick="dk('${s[0]}')">Đăng ký mượn</button>
+   </div></div></div></div>`).join(''):'<p class="text-muted">Không tìm thấy sách phù hợp. Hãy thử từ khóa khác.</p>';
+}
+function dk(t){document.getElementById('dkTen').textContent=t;new bootstrap.Modal('#dk').show()}
+document.getElementById('q').addEventListener('input',render);render();
+</script>

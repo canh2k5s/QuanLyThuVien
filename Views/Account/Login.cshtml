@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="text-center mb-4">
+            <h2>Đăng nhập</h2>
+            <p>Chào mừng anh quay trở lại thư viện</p>
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-controller="Account"
+              asp-action="Login"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label class="form-label">Tên đăng nhập hoặc Email</label>
+                <input type="text"
+                       name="TaiKhoan"
+                       class="form-control"
+                       placeholder="Nhập tên đăng nhập hoặc email"
+                       required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Mật khẩu</label>
+                <input type="password"
+                       name="MatKhau"
+                       class="form-control"
+                       placeholder="Nhập mật khẩu"
+                       required />
+            </div>
+
+            <button type="submit" class="btn btn-auth w-100">
+                Đăng nhập
+            </button>
+        </form>
+
+        <div class="text-center mt-4">
+            Chưa có tài khoản?
+            <a asp-controller="Account" asp-action="Register">
+                Đăng ký ngay
+            </a>
+        </div>
+    </div>
+</div>

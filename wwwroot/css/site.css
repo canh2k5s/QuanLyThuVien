@@ -1,0 +1,524 @@
+
+:root {
+    --primary: #0d6efd;       /* Xanh dương hiện đại (chủ đạo) */
+    --primary-dark: #0a58ca;
+    --secondary: #10b981;     /* Xanh lá (cho nút Đăng ký) */
+    --accent: #f59e0b;        /* Cam vàng (điểm nhấn, badge) */
+    --bg-body: #f4f6f9;       /* Xám rất nhạt cho nền tổng thể */
+    --text-main: #1f2937;     /* Xám đen cho chữ */
+    --text-muted: #6b7280;    /* Xám nhạt cho chữ phụ */
+    --border-color: #e5e7eb;  /* Viền xám nhạt */
+}
+
+body {
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, .brand, .footer-brand {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 700;
+}
+
+main {
+    flex: 1; /* Đẩy footer xuống đáy */
+}
+
+.navbar-lib {
+    background-color: #ffffff; /* Nền trắng sạch sẽ */
+    padding: 15px 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand {
+    font-size: 24px;
+    color: var(--primary) !important;
+}
+
+.brand span {
+    color: var(--accent); /* Chữ "trực tuyến" màu cam */
+}
+
+.navbar-lib .nav-link {
+    color: var(--text-main) !important;
+    font-weight: 500;
+    margin-left: 8px;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.navbar-lib .nav-link:hover,
+.navbar-lib .nav-link.active {
+    color: var(--primary) !important;
+    background-color: rgba(13, 110, 253, 0.08); /* Nền xanh nhạt khi hover */
+}
+
+/* Nút Đăng nhập */
+.btn-gold {
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 6px;
+}
+.btn-gold:hover {
+    background-color: var(--primary-dark);
+    color: #ffffff;
+}
+
+
+.hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); /* Gradient tối sang trọng */
+    color: #ffffff;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 1.5rem;
+}
+
+.search-box {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.search-box .form-control {
+    border: none;
+    box-shadow: none;
+    padding: 10px 15px;
+}
+.search-box .form-control:focus {
+    border: none;
+    box-shadow: none;
+}
+
+/* Nút tìm kiếm */
+.btn-teal {
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+.btn-teal:hover {
+    background-color: var(--primary-dark);
+    color: #ffffff;
+}
+
+
+.nav-tabs {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-muted);
+    border: none;
+    font-weight: 500;
+    padding: 12px 20px;
+    margin-bottom: -2px;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary);
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary);
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary);
+    background: transparent;
+}
+
+
+.book {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
+}
+
+/* Phần bìa sách (Cover) - Chuyển sang màu Pastel nhạt, chữ đậm để dễ đọc */
+.cover {
+    height: 140px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+/* Các lớp màu cho cover */
+.c1 { background: #e0f2fe; color: #0369a1; } /* Xanh da trời nhạt */
+.c2 { background: #dcfce7; color: #15803d; } /* Xanh lá nhạt */
+.c3 { background: #ffedd5; color: #c2410c; } /* Cam nhạt */
+.c4 { background: #f3e8ff; color: #7e22ce; } /* Tím nhạt */
+.c5 { background: #f1f5f9; color: #334155; } /* Xám nhạt */
+.c6 { background: #fef3c7; color: #b45309; } /* Vàng nhạt */
+
+/* Nút Đăng ký mượn trong thẻ sách */
+.book .btn-teal {
+    background-color: var(--secondary);
+    padding: 6px 12px;
+    font-size: 0.875rem;
+}
+.book .btn-teal:hover {
+    background-color: #059669;
+}
+
+/* Badge trạng thái */
+.badge-ok { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.badge-out { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+/* =========================================
+   7. BẢNG & PANEL (Tab Lịch sử)
+   ========================================= */
+.panel {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.table thead th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Trạng thái (Status) */
+.st {
+    font-size: 0.75rem;
+    padding: 0.4em 0.8em;
+    border-radius: 20px; /* Bo tròn hoàn toàn */
+    font-weight: 600;
+}
+.st-ChoDuyet { background: #fef3c7; color: #92400e; }
+.st-DaDuyet { background: #dbeafe; color: #1e40af; }
+.st-DangMuon { background: #d1fae5; color: #065f46; }
+.st-DaTra { background: #f3f4f6; color: #4b5563; }
+.st-TuChoi, .st-QuaHan { background: #fee2e2; color: #991b1b; }
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
+.footer-lib {
+    background-color: #ffffff;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+    padding: 3rem 0 1rem;
+}
+
+.footer-brand {
+    color: var(--text-main);
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+}
+
+.footer-lib h5 {
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.footer-line {
+    border-color: var(--border-color);
+    margin: 2rem 0 1rem;
+}
+
+/* =========================================
+   9. ADMIN SIDEBAR (Nếu có)
+   ========================================= */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+}
+.sidebar .nav-link {
+    color: var(--text-main);
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+.stat {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+.stat .num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+@media(max-width: 991px){
+    .sidebar { width: 100%; min-height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border-color); }
+}
+/* Giao diện đăng nhập và đăng ký */
+.auth-page {
+    min-height: 75vh;
+    background: #f4f7f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.auth-card h2 {
+    color: #123c36;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+}
+
+.auth-card p {
+    color: #777;
+    font-size: 14px;
+}
+
+.auth-card .form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.auth-card .form-control {
+    padding: 11px 13px;
+    border-radius: 8px;
+}
+
+.auth-card .form-control:focus {
+    border-color: #1d6558;
+    box-shadow: 0 0 0 0.2rem rgba(29, 101, 88, 0.15);
+}
+
+.btn-auth {
+    background: #123c36;
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn-auth:hover {
+    background: #1d6558;
+    color: white;
+}
+
+.auth-card a {
+    color: #1d6558;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================
+   NÂNG CẤP NHẸ GIAO DIỆN - 11/2026
+   Chỉ điều chỉnh giao diện; không thay đổi dữ liệu/JS/chức năng.
+   Muốn quay về giao diện cũ: xóa phần CSS từ đây trở xuống.
+   ========================================================== */
+
+/* Thanh điều hướng: gọn gàng, hiện đại hơn nhưng giữ bố cục cũ */
+.navbar-lib {
+    padding: 12px 0;
+    box-shadow: 0 3px 22px rgba(29, 45, 77, .045);
+}
+.navbar-lib .brand { letter-spacing: -.5px; }
+.navbar-lib .nav-link { border-radius: 9px; }
+.navbar-lib .nav-link:hover { background-color: #edf4ff; }
+
+/* Hero: thêm chiều sâu nhẹ, không thay đổi cách tìm sách */
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 52px 0 58px;
+    background: linear-gradient(118deg, #112541 0%, #173f67 58%, #235b79 100%);
+    border-radius: 0 0 22px 22px;
+    margin-bottom: 14px;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 420px;
+    height: 420px;
+    right: -105px;
+    top: -215px;
+    border: 78px solid rgba(255,255,255,.045);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.hero .container { position: relative; z-index: 1; }
+.hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    font: 700 11px/1.5 'Be Vietnam Pro', sans-serif;
+    letter-spacing: 2px;
+    color: #a9e5e5;
+}
+.hero h1 {
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 700;
+    letter-spacing: -.9px;
+}
+.hero-description {
+    color: #d9e7f2;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 25px;
+}
+.search-box {
+    max-width: 900px;
+    margin: 0;
+    border: 1px solid rgba(255,255,255,.65);
+    border-radius: 14px;
+    padding: 7px;
+    box-shadow: 0 13px 35px rgba(5,18,39,.22);
+}
+.search-box .form-control { min-height: 45px; padding: 11px 17px; }
+.search-box .form-control::placeholder { color: #909bb0; }
+.search-box .btn-teal { border-radius: 9px; min-height: 45px; }
+.btn-teal { transition: background-color .2s, box-shadow .2s, transform .2s; }
+.btn-teal:not(:disabled):hover { box-shadow: 0 5px 13px rgba(13,110,253,.17); }
+
+/* Các tab và danh sách: nhấn mạnh lựa chọn, giữ nguyên vị trí */
+.nav-tabs .nav-link { border-radius: 9px 9px 0 0; transition: color .2s, background .2s; }
+.nav-tabs .nav-link:not(.active):hover { background: #ecf3ff; }
+.nav-tabs .nav-link.active { border-bottom-width: 3px; }
+
+/* Thẻ sách: bo góc và phối gradient pastel nhẹ */
+.book {
+    border-radius: 16px;
+    box-shadow: 0 3px 15px rgba(24,45,72,.045);
+    transition: transform .22s, box-shadow .22s, border-color .22s;
+}
+.book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(24,45,72,.115);
+    border-color: #cbd8e8;
+}
+.cover {
+    min-height: 166px;
+    height: auto;
+    position: relative;
+    isolation: isolate;
+    padding: 24px;
+    font-size: 1.25rem;
+    letter-spacing: -.3px;
+    overflow: hidden;
+}
+.cover::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 150px;
+    height: 150px;
+    right: -45px;
+    top: -52px;
+    border: 25px solid currentColor;
+    border-radius: 50%;
+    opacity: .085;
+}
+.c1 { background: linear-gradient(125deg, #e0f2fe, #d9eafc); }
+.c2 { background: linear-gradient(125deg, #dcfce7, #e2f7e7); }
+.c3 { background: linear-gradient(125deg, #ffedd5, #fff2df); }
+.c4 { background: linear-gradient(125deg, #f3e8ff, #eae5ff); }
+.c5 { background: linear-gradient(125deg, #f1f5f9, #e9eff8); }
+.c6 { background: linear-gradient(125deg, #fef3c7, #ffefd0); }
+.book .p-3 { padding: 19px !important; }
+.book .badge { border-radius: 20px; font-weight: 600; padding: 7px 10px; }
+.book .btn-teal { border-radius: 8px; padding: 8px 12px; }
+.panel { border-radius: 14px; box-shadow: 0 4px 18px rgba(20, 42, 72,.04); }
+.list-group-item { border-color: var(--border-color); padding: 17px 19px; }
+
+/* Modal đăng ký: đảm bảo đúng nền trắng và căn giữa khi mở */
+#dk .modal-dialog { max-width: min(480px, calc(100vw - 28px)); margin-left: auto; margin-right: auto; }
+#dk .modal-content {
+    background: #fff;
+    color: #1f2937;
+    border: 1px solid #e6ecf3;
+    border-radius: 17px;
+    overflow: hidden;
+    box-shadow: 0 25px 65px rgba(4,20,40,.22);
+}
+#dk .modal-header { padding: 20px 24px; border-color: #eef1f5; }
+#dk .modal-title { font-family: 'Be Vietnam Pro', sans-serif; font-size: 19px; }
+#dk .modal-body { padding: 24px; }
+#dk .modal-body .form-control { border-radius: 9px; min-height: 44px; }
+#dk .modal-body .form-control:focus { border-color: #7db1fa; box-shadow: 0 0 0 .2rem rgba(13,110,253,.12); }
+#dk .modal-footer { padding: 16px 24px; border-color: #eef1f5; }
+#dk .modal-footer .btn-teal { border-radius: 9px; }
+
+/* Chỉnh nhẹ ở màn hình nhỏ để không bị tràn */
+@media (max-width: 767px) {
+    .hero { padding: 36px 0 40px; border-radius: 0 0 16px 16px; }
+    .hero-description { font-size: 13px; }
+    .search-box { gap: 4px; }
+    .search-box .btn-teal { width: 100%; }
+    .cover { min-height: 146px; }
+    .nav-tabs .nav-link { padding: 11px 12px; font-size: 13px; }
+}
